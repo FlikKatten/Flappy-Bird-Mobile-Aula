@@ -6,6 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public float jumpForce = 5f;
     private Rigidbody2D _physics;
+    private AudioManager _audioManager;
+
+    private void Awake()
+    {
+        _audioManager = FindAnyObjectByType<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.touchCount > 0)
         {
             _physics.velocity = Vector2.up * jumpForce;
+            _audioManager.PlayClip(2);
         }
     }
 }
